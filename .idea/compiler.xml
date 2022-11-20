@@ -9,7 +9,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="cinema" />
         <module name="movie" />
-        <module name="ticket" />
         <module name="user" />
       </profile>
     </annotationProcessing>

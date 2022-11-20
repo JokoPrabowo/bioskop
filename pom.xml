@@ -12,7 +12,6 @@
   <modules>
     <module>user</module>
     <module>movie</module>
-    <module>ticket</module>
     <module>cinema</module>
   </modules>
 

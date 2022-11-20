@@ -13,7 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Embeddable
 public class SeatId implements Serializable {
-    private Integer studioId;
+
     private Character seatRow;
     private Integer seatNumber;
 

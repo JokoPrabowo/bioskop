@@ -13,6 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Table(name = "Studios")
 public class Studio {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "studio_id")
@@ -20,7 +21,4 @@ public class Studio {
 
     @Column(name = "studio_name")
     private String studioName;
-
-    @JoinColumn(name = "studio-id", insertable = false, updatable = false)
-    private Set<SeatId> seatIds;
 }
