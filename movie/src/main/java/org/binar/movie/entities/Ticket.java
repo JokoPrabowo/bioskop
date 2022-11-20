@@ -4,10 +4,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -42,5 +45,13 @@ public class Ticket {
     @NotNull
     @Column(name = "seat_number")
     private Integer seatNumber;
+
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @Column(name = "create_at")
+    private LocalDateTime createAt;
+
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+    @Column(name = "update_at")
+    private LocalDateTime updateAt;
 
 }

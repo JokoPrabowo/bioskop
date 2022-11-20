@@ -8,6 +8,8 @@ import org.binar.movie.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Slf4j
@@ -19,7 +21,9 @@ public class TicketServiceImpl implements TicketService {
     public Ticket create(TicketModel ticket){
         log.info("Creating ticket data");
         try{
-            Ticket data = new Ticket(null, ticket.getUsername(), ticket.getScheduleId(), null, ticket.getSeatRow(), ticket.getSeatNumber());
+            String created = LocalDateTime.now().toString();
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+            Ticket data = new Ticket(null, ticket.getUsername(), ticket.getScheduleId(), null, ticket.getSeatRow(), ticket.getSeatNumber(), LocalDateTime.parse(created, format), null);
             log.info("Ticket data has been created");
             return ticketRepo.save(data);
         }catch(Exception e){
@@ -31,10 +35,13 @@ public class TicketServiceImpl implements TicketService {
         log.info("Updating ticket data");
         try{
             Ticket data = findOne(id);
+            String updated = LocalDateTime.now().toString();
+            DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
             data.setUsername(ticket.getUsername());
             data.setScheduleId(ticket.getScheduleId());
             data.setSeatRow(ticket.getSeatRow());
             data.setSeatNumber(ticket.getSeatNumber());
+            data.setUpdateAt(LocalDateTime.parse(updated, format));
             log.info("Ticket data has been updated");
             return ticketRepo.save(data);
         }catch(Exception e){
