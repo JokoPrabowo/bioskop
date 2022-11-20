@@ -57,7 +57,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         try{
             File file = ResourceUtils.getFile("classpath:InvoiceReport.jrxml");
             JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-            List<Ticket> state = ticketRepo.findAllReports();
+            List<Ticket> state = ticketRepo.findAll();
             Map<String, Object> parameter = new HashMap<>();
             parameter.put("data", "myData");
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, new JRBeanCollectionDataSource(state));
